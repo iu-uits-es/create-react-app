@@ -3,8 +3,8 @@
 This package includes some utilities used by [Create React App](https://github.com/facebook/create-react-app).<br>
 Please refer to its documentation:
 
-* [Getting Started](https://github.com/facebook/create-react-app/blob/master/README.md#getting-started) – How to create a new app.
-* [User Guide](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md) – How to develop apps bootstrapped with Create React App.
+- [Getting Started](https://github.com/facebook/create-react-app/blob/master/README.md#getting-started) – How to create a new app.
+- [User Guide](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md) – How to develop apps bootstrapped with Create React App.
 
 ## Usage in Create React App Projects
 
@@ -18,14 +18,14 @@ If you don’t use Create React App, or if you [ejected](https://github.com/face
 
 There is no single entry point. You can only import individual top-level modules.
 
-#### `new InterpolateHtmlPlugin(replacements: {[key:string]: string})`
+#### `new InterpolateHtmlPlugin(htmlWebpackPlugin: HtmlWebpackPlugin, replacements: {[key:string]: string})`
 
 This Webpack plugin lets us interpolate custom variables into `index.html`.<br>
 It works in tandem with [HtmlWebpackPlugin](https://github.com/ampedandwired/html-webpack-plugin) 2.x via its [events](https://github.com/ampedandwired/html-webpack-plugin#events).
 
 ```js
 var path = require('path');
-var HtmlWebpackPlugin = require('html-dev-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 var InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 
 // Webpack config
@@ -50,6 +50,39 @@ module.exports = {
       // You can pass any key-value pairs, this was just an example.
       // WHATEVER: 42 will replace %WHATEVER% with 42 in index.html.
     }),
+    // ...
+  ],
+  // ...
+};
+```
+
+#### `new InlineChunkHtmlPlugin(htmlWebpackPlugin: HtmlWebpackPlugin, tests: Regex[])`
+
+This Webpack plugin inlines script chunks into `index.html`.<br>
+It works in tandem with [HtmlWebpackPlugin](https://github.com/ampedandwired/html-webpack-plugin) 4.x.
+
+```js
+var path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var InlineChunkHtmlPlugin = require('react-dev-utils/InlineChunkHtmlPlugin');
+
+// Webpack config
+var publicUrl = '/my-custom-url';
+
+module.exports = {
+  output: {
+    // ...
+    publicPath: publicUrl + '/',
+  },
+  // ...
+  plugins: [
+    // Generates an `index.html` file with the <script> injected.
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: path.resolve('public/index.html'),
+    }),
+    // Inlines chunks with `runtime` in the name
+    new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime/]),
     // ...
   ],
   // ...
@@ -360,4 +393,14 @@ module: {
     },
   ];
 }
+```
+
+#### `getCacheIdentifier(environment: string, packages: string[]): string`
+
+Returns a cache identifier (string) consisting of the specified environment and related package versions, e.g.,
+
+```js
+var getCacheIdentifier = require('react-dev-utils/getCacheIdentifier');
+
+getCacheIdentifier('prod', ['react-dev-utils', 'chalk']); // # => 'prod:react-dev-utils@5.0.0:chalk@2.4.1'
 ```
