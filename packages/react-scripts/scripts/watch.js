@@ -4,7 +4,7 @@ process.env.NODE_ENV = 'development';
 const fs = require('fs-extra');
 const paths = require('../config/paths');
 const webpack = require('webpack');
-const config = require('../config/webpack.config.js');
+const config = require('../config/webpack.config.js')(process.env.NODE_ENV);
 
 config.entry = config.entry.filter(
   entry => !entry.includes('webpackHotDevClient')
