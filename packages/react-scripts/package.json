@@ -1,6 +1,6 @@
 {
   "name": "spring-boot-react-scripts",
-  "version": "2.1.6",
+  "version": "2.1.7",
   "publishConfig": {
     "registry": "https://npmjs.iu.edu/repository"
   },

@@ -1,9 +1,10 @@
+'use strict';
 process.env.NODE_ENV = 'development';
 
 const fs = require('fs-extra');
 const paths = require('../config/paths');
 const webpack = require('webpack');
-const config = require('../config/webpack.config.dev.js');
+const config = require('../config/webpack.config.js');
 
 config.entry = config.entry.filter(
   entry => !entry.includes('webpackHotDevClient')
@@ -17,16 +18,18 @@ webpack(config).watch({}, (err, stats) => {
   } else {
     copyPublicFolder();
   }
-  console.error(stats.toString({
-    chunks: false,
-    colors: true
-  }));
+  console.error(
+    stats.toString({
+      chunks: false,
+      colors: true,
+    })
+  );
 });
 
 function copyPublicFolder() {
   fs.existsSync(paths.appPublic) &&
-  fs.copySync(paths.appPublic, paths.appBuild, {
-    dereference: true,
-    filter: file => file !== paths.appHtml
-  });
+    fs.copySync(paths.appPublic, paths.appBuild, {
+      dereference: true,
+      filter: file => file !== paths.appHtml,
+    });
 }
