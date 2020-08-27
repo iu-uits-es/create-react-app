@@ -67,7 +67,12 @@ module.exports = {
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('src/main/js'),
   appTsConfig: resolveApp('tsconfig.json'),
+<<<<<<< HEAD
   appJsConfig: resolveApp('jsconfig.json'),
+=======
+  // This is an IU Customization
+  testSrc: resolveApp('src/test/js'),
+>>>>>>> origin/master
   yarnLockFile: resolveApp('yarn.lock'),
   testsSetup: resolveModule(resolveApp, 'src/test/js/setupTests'),
   proxySetup: resolveModule(resolveApp, 'src/main/js/setupProxy'),
