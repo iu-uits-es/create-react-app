@@ -29,7 +29,11 @@ serve -h
 
 ## Other Solutions
 
+<<<<<<< HEAD
+You don’t necessarily need a static server in order to run a Create React App project in production. It also works well when integrated into an existing server side app.
+=======
 You don’t necessarily need a static server in order to run a Create React App project in production. It works just as fine integrated into an existing dynamic one.
+>>>>>>> origin/master
 
 Here’s a programmatic example using [Node](https://nodejs.org/) and [Express](https://expressjs.com/):
 
@@ -40,7 +44,11 @@ const app = express();
 
 app.use(express.static(path.join(__dirname, 'build')));
 
+<<<<<<< HEAD
+app.get('/', function (req, res) {
+=======
 app.get('/', function(req, res) {
+>>>>>>> origin/master
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
@@ -90,7 +98,11 @@ service worker navigation routing can be configured or disabled by
 [`eject`ing](available-scripts.md#npm-run-eject) and then modifying the
 [`navigateFallback`](https://github.com/GoogleChrome/sw-precache#navigatefallback-string)
 and [`navigateFallbackWhitelist`](https://github.com/GoogleChrome/sw-precache#navigatefallbackwhitelist-arrayregexp)
+<<<<<<< HEAD
+options of the `SWPrecachePlugin` [configuration](../config/webpack.config.prod.js).
+=======
 options of the `SWPreachePlugin` [configuration](../config/webpack.config.prod.js).
+>>>>>>> origin/master
 
 When users install your app to the homescreen of their device the default configuration will make a shortcut to `/index.html`. This may not work for client-side routers which expect the app to be served from `/`. Edit the web app manifest at [`public/manifest.json`](public/manifest.json) and change `start_url` to match the required URL scheme, for example:
 
@@ -100,7 +112,12 @@ When users install your app to the homescreen of their device the default config
 
 ## Building for Relative Paths
 
+<<<<<<< HEAD
+By default, Create React App produces a build assuming your app is hosted at the server root.
+
+=======
 By default, Create React App produces a build assuming your app is hosted at the server root.<br>
+>>>>>>> origin/master
 To override this, specify the `homepage` in your `package.json`, for example:
 
 ```js
@@ -109,10 +126,17 @@ To override this, specify the `homepage` in your `package.json`, for example:
 
 This will let Create React App correctly infer the root path to use in the generated HTML file.
 
+<<<<<<< HEAD
+**Note**: If you are using `react-router@^4`, you can root `<Link>`s using the `basename` prop on any `<Router>`.
+
+More information [here](https://reacttraining.com/react-router/web/api/BrowserRouter/basename-string).
+
+=======
 **Note**: If you are using `react-router@^4`, you can root `<Link>`s using the `basename` prop on any `<Router>`.<br>
 More information [here](https://reacttraining.com/react-router/web/api/BrowserRouter/basename-string).<br>
 
 <br>
+>>>>>>> origin/master
 For example:
 
 ```js
@@ -150,7 +174,11 @@ For example, to create a build environment for a staging environment:
    ```json
    {
      "scripts": {
+<<<<<<< HEAD
+       "build:staging": "env-cmd -f .env.staging npm run build"
+=======
        "build:staging": "env-cmd .env.staging npm run build"
+>>>>>>> origin/master
      }
    }
    ```
@@ -160,11 +188,36 @@ You can specify other environments in the same way.
 
 Variables in `.env.production` will be used as fallback because `NODE_ENV` will always be set to `production` for a build.
 
+<<<<<<< HEAD
+## [AWS Amplify](http://console.amplify.aws)
+
+The AWS Amplify Console provides continuous deployment and hosting for modern web apps (single page apps and static site generators) with serverless backends. The Amplify Console offers globally available CDNs, custom domain setup, feature branch deployments, and password protection.
+
+1. Login to the Amplify Console [here](https://console.aws.amazon.com/amplify/home).
+1. Connect your Create React App repo and pick a branch. If you're looking for a Create React App+Amplify starter, try the [create-react-app-auth-amplify starter](https://github.com/swaminator/create-react-app-auth-amplify) that demonstrates setting up auth in 10 minutes with Create React App.
+1. The Amplify Console automatically detects the build settings. Choose Next.
+1. Choose _Save and deploy_.
+
+If the build succeeds, the app is deployed and hosted on a global CDN with an amplifyapp.com domain. You can now continuously deploy changes to your frontend or backend. Continuous deployment allows developers to deploy updates to their frontend and backend on every code commit to their Git repository.
+
+## [Azure](https://azure.microsoft.com/)
+
+Azure Static Web Apps creates an automated build and deploy pipeline for your React app powered by GitHub Actions. Applications are geo-distributed by default with multiple points of presence. PR's are built automatically for staging environment previews.
+
+1. Create a new Static Web App [here](https://ms.portal.azure.com/#create/Microsoft.StaticApp).
+1. Add in the details and connect to your GitHub repo.
+1. Make sure the build folder is set correctly on the "build" tab and create the resource.
+
+Azure Static Web Apps will automatically configure a GitHub Action in your repo and begin the deployment.
+
+See the [Azure Static Web Apps documentation](https://aka.ms/swadocs) for more information on routing, APIs, authentication and authorization, custom domains and more.
+=======
 ## [Azure](https://azure.microsoft.com/)
 
 See [this](https://medium.com/@to_pe/deploying-create-react-app-on-microsoft-azure-c0f6686a4321) blog post on how to deploy your React app to Microsoft Azure.
 
 See [this](https://medium.com/@strid/host-create-react-app-on-azure-986bc40d5bf2#.pycfnafbg) blog post or [this](https://github.com/ulrikaugustsson/azure-appservice-static) repo for a way to use automatic deployment to Azure App Service.
+>>>>>>> origin/master
 
 ## [Firebase](https://firebase.google.com/)
 
@@ -177,7 +230,11 @@ Then run the `firebase init` command from your project’s root. You need to cho
 
     First, let's associate this project directory with a Firebase project.
     You can create multiple project aliases by running firebase use --add,
+<<<<<<< HEAD
+    but for now we'll set up a default project.
+=======
     but for now we'll just set up a default project.
+>>>>>>> origin/master
 
     ? What Firebase project do you want to associate as default? Example app (example-app-fd690)
 
@@ -209,7 +266,11 @@ Then run the `firebase init` command from your project’s root. You need to cho
 
 IMPORTANT: you need to set proper HTTP caching headers for `service-worker.js` file in `firebase.json` file or you will not be able to see changes after first deployment ([issue #2440](https://github.com/facebook/create-react-app/issues/2440)). It should be added inside `"hosting"` key like next:
 
+<<<<<<< HEAD
+```json
+=======
 ```
+>>>>>>> origin/master
 {
   "hosting": {
     ...
@@ -245,7 +306,11 @@ For more information see [Firebase Hosting](https://firebase.google.com/docs/hos
 
 ### Step 1: Add `homepage` to `package.json`
 
+<<<<<<< HEAD
+**The step below is important!**<br/>
+=======
 **The step below is important!**<br>
+>>>>>>> origin/master
 
 **If you skip it, your app will not deploy correctly.**
 
@@ -321,7 +386,11 @@ npm run deploy
 
 Finally, make sure **GitHub Pages** option in your GitHub project settings is set to use the `gh-pages` branch:
 
+<<<<<<< HEAD
+<img src="https://i.imgur.com/HUjEr9l.png" width="500" alt="gh-pages branch setting" />
+=======
 <img src="https://i.imgur.com/HUjEr9l.png" width="500" alt="gh-pages branch setting">
+>>>>>>> origin/master
 
 ### Step 5: Optionally, configure the domain
 
@@ -338,7 +407,11 @@ mywebsite.com
 GitHub Pages doesn’t support routers that use the HTML5 `pushState` history API under the hood (for example, React Router using `browserHistory`). This is because when there is a fresh page load for a url like `http://user.github.io/todomvc/todos/42`, where `/todos/42` is a frontend route, the GitHub Pages server returns 404 because it knows nothing of `/todos/42`. If you want to add a router to a project hosted on GitHub Pages, here are a couple of solutions:
 
 - You could switch from using HTML5 history API to routing with hashes. If you use React Router, you can switch to `hashHistory` for this effect, but the URL will be longer and more verbose (for example, `http://user.github.io/todomvc/#/todos/42?_k=yknaj`). [Read more](https://reacttraining.com/react-router/web/api/Router) about different history implementations in React Router.
+<<<<<<< HEAD
+- Alternatively, you can use a trick to teach GitHub Pages to handle 404s by redirecting to your `index.html` page with a custom redirect parameter. You would need to add a `404.html` file with the redirection code to the `build` folder before deploying your project, and you’ll need to add code handling the redirect parameter to `index.html`. You can find a detailed explanation of this technique [in this guide](https://github.com/rafrex/spa-github-pages).
+=======
 - Alternatively, you can use a trick to teach GitHub Pages to handle 404 by redirecting to your `index.html` page with a special redirect parameter. You would need to add a `404.html` file with the redirection code to the `build` folder before deploying your project, and you’ll need to add code handling the redirect parameter to `index.html`. You can find a detailed explanation of this technique [in this guide](https://github.com/rafrex/spa-github-pages).
+>>>>>>> origin/master
 
 ### Troubleshooting
 
@@ -360,7 +433,12 @@ If, when deploying, you get `Cannot read property 'email' of null`, try the foll
 
 ## [Heroku](https://www.heroku.com/)
 
+<<<<<<< HEAD
+Use the [Heroku Buildpack for Create React App](https://github.com/mars/create-react-app-buildpack).
+
+=======
 Use the [Heroku Buildpack for Create React App](https://github.com/mars/create-react-app-buildpack).<br>
+>>>>>>> origin/master
 You can find instructions in [Deploying React with Zero Configuration](https://blog.heroku.com/deploying-react-with-zero-configuration).
 
 ### Resolving Heroku Deployment Errors
@@ -425,16 +503,57 @@ To support `pushState`, make sure to create a `public/_redirects` file with the 
 
 When you build the project, Create React App will place the `public` folder contents into the build output.
 
+<<<<<<< HEAD
+## [ZEIT Now](https://zeit.co)
+
+[ZEIT Now](https://zeit.co) is a cloud platform for websites and serverless APIs, that you can use to deploy your Create React App projects to your personal domain (or a free `.now.sh` suffixed URL).
+
+This guide will show you how to get started in a few quick steps:
+
+### Step 1: Installing Now CLI
+
+To install their command-line interface with [npm](https://www.npmjs.com/package/now), run the following command:
+=======
 ## [Now](https://zeit.co/now)
 
 [Now](https://zeit.co/docs) offers a simple, single-command deployment. You can use `now` to deploy your app for free.
 
 The first step is to install Now. You can do this by installing [the Now Desktop app](https://zeit.co/download), which also installs Now CLI and keeps it up-to-date, or by [installing Now CLI](https://zeit.co/download#now-cli) directly with npm:
+>>>>>>> origin/master
 
 ```shell
 npm i -g now
 ```
 
+<<<<<<< HEAD
+### Step 2: Deploying
+
+You can deploy your application by running the following command in the root of the project directory:
+
+```shell
+now
+```
+
+**Alternatively**, you can also use their integration for [GitHub](https://zeit.co/github) or [GitLab](https://zeit.co/gitlab).
+
+That’s all!
+
+Your site will now deploy, and you will receive a link similar to the following: https://react.now-examples.now.sh
+
+Out of the box, you are preconfigured for client-side routing compatibility and appropriate default caching headers. This behaviour can be overwritten [like this](https://zeit.co/docs/v2/advanced/routes/).
+
+## [Render](https://render.com)
+
+Render offers free [static site](https://render.com/docs/static-sites) hosting with fully managed SSL, a global CDN and continuous auto deploys from GitHub.
+
+Deploy your app in only a few minutes by following the [Create React App deployment guide](https://render.com/docs/deploy-create-react-app).
+
+Use invite code `cra` to sign up or use [this link](https://render.com/i/cra).
+
+## [S3](https://aws.amazon.com/s3) and [CloudFront](https://aws.amazon.com/cloudfront/)
+
+See this [blog post](https://medium.com/@omgwtfmarc/deploying-create-react-app-to-s3-or-cloudfront-48dae4ce0af) on how to deploy your React app to Amazon Web Services S3 and CloudFront. If you are looking to add a custom domain, HTTPS and continuous deployment see this [blog post](https://medium.com/dailyjs/a-guide-to-deploying-your-react-app-with-aws-s3-including-https-a-custom-domain-a-cdn-and-58245251f081).
+=======
 To deploy your built project directly with Now CLI in your terminal, without any configuration:
 
 1. Build your app by running `npm run build`.
@@ -450,6 +569,7 @@ For more information on deploying React applications with Now, including automat
 ## [S3](https://aws.amazon.com/s3) and [CloudFront](https://aws.amazon.com/cloudfront/)
 
 See this [blog post](https://medium.com/@omgwtfmarc/deploying-create-react-app-to-s3-or-cloudfront-48dae4ce0af) on how to deploy your React app to Amazon Web Services S3 and CloudFront.
+>>>>>>> origin/master
 
 ## [Surge](https://surge.sh/)
 
