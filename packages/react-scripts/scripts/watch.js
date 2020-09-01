@@ -6,9 +6,9 @@ const paths = require('../config/paths');
 const webpack = require('webpack');
 const config = require('../config/webpack.config.js')(process.env.NODE_ENV);
 
-config.entry = config.entry.filter(
-  entry => !entry.includes('webpackHotDevClient')
-);
+// config.entry = config.entry.filter(
+//   entry => !entry.includes('webpackHotDevClient')
+// );
 
 config.output.path = paths.appBuild;
 

@@ -78,7 +78,7 @@ module.exports = (resolve, rootDir, isEjecting) => {
       `${jestSrcDir}/**/?(*.)(spec|test).{js,jsx,mjs}`,
       `${jestTestDir}/**/?(*.)(spec|test).{js,jsx,mjs}`,
     ];
-    config.setupTestFrameworkScriptFile = setupTestsFile;
+    config.setupFilesAfterEnv = [setupTestsFile];
   }
   const overrides = Object.assign({}, require(paths.appPackageJson).jest);
   const supportedKeys = [
